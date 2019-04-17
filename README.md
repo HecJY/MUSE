@@ -4,8 +4,8 @@
 - Finish GPIO.c
 
 ## ToDo PCB
-- Schematic
-- PCB
+- Schematic **(NEED proofreading)**
+- PCB **NEED LAYOUT**
 
 ## PINs USED
 - TIM2
