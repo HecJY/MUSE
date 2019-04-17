@@ -48,3 +48,23 @@ void enable_GPIOB(void){
     GPIOB->MODER &=~GPIO_MODER_MODER10;
 
 }
+
+
+
+/*lab6 information*/
+//DAC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
