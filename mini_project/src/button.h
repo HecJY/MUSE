@@ -1,7 +1,9 @@
 #include "stm32f0xx.h"
 #include "stm32f0_discovery.h"
-
-int getkey(void);
+#define KEY_PRESS_MASK  0b11000111
+#define KEY_REL_MASK    0b11100011
+int *getrow(void);
+int *getcol(void);
 void gpio_btn(void);
 
 /* Debounce Algorithm*/
