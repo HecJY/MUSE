@@ -1,11 +1,12 @@
 # ECE362project
 
 ## ToDo Coding
-- Finish GPIO.c
+- Test and improve
 
 ## ToDo PCB
 - Schematic **(NEED proofreading)**
 - PCB **NEED LAYOUT**
+- Build the prototype
 
 ## PINs USED
 - TIM2
