@@ -1,9 +1,10 @@
 #include "voice.h"
 int s1 = 0;
 int s2 = 0;
-int waveform[100];
+int waveform[256];
 
-int wavetable[100];
+int wavetable[256];
+
 float freqtable[]={
         /*left half*/
         138.5913, //C♯3/D♭3
@@ -34,9 +35,9 @@ float freqtable[]={
         523.2511
 };
 int *waveform_gen(int key_index){
-    float offset = 2048.0;
-    float amp = 500;
-    int n = 100;
+    float offset = 0.0;
+    float amp = 32767;
+    int n = 256;
     float freq = freqtable[key_index];
     for(int i=0; i< n; i++){
         float point =offset +amp* sin(i*2*M_PI*freq);
@@ -52,7 +53,6 @@ void setup_gpio() {
     GPIOA->MODER &= ~(0x33F);
     GPIOA->MODER |= 0x33F;
 }
-
 
 void setup_dac() {
     RCC->APB1ENR |= RCC_APB1ENR_DACEN;
@@ -75,15 +75,19 @@ void setup_timer2() {
     TIM2->DIER |= TIM_DIER_CC2IE;
     TIM2->CCER |= TIM_CCER_CC1E;
     TIM2->DIER |= TIM_DIER_CC1IE;*/
-
+    wavetable = waveform_gen(12);
     NVIC -> ISER[0] = 1 << TIM2_IRQn;
 }
 
 void TIM2_IRQHandler() {
     while((DAC->SWTRIGR & DAC_SWTRIGR_SWTRIG1) == DAC_SWTRIGR_SWTRIG1);
-    float point_rn = waveform_gen(s2)[s1];
+    //wavetable = waveform_gen(12);
+    float point_rn = (wavetabl[s1] + 32768)>>4;
+    //float point_rn = waveform_gen(12)[s1];
     DAC->DHR12R1 = (int) point_rn;
     DAC->SWTRIGR |= DAC_SWTRIGR_SWTRIG1;
+    s1 = s1%256;
+    s1 +=1;
       /*  if (s1==100)
             {s1 = 0;}
         else if (s1!=100)
@@ -92,18 +96,22 @@ void TIM2_IRQHandler() {
             {s2 = 0;}
         else if (s2!=100)
             {s2 +=2;}*/
+    /*
     if (s1 < 100){
         s1 ++;
     }
     else{
-        s1 = 0;
+        s1 = 0;*/
+        /*
         s2 ++;
         if (s2 >= 24)
         {
            s2 =0;
-        }
-    }
+        }*/
+    //}
     //    s2 = (s2+2)%100;
         TIM2->SR &=~TIM_SR_UIF;
 
 }
+
+
