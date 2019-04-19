@@ -8,11 +8,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-int *waveform_gen(int key_index);
+void waveform_gen(void);
 void setup_gpio(void);
 void setup_dac(void);
 void setup_timer2(void);
 void TIM2_IRQHandler(void);
+
+
 
 
 #endif

@@ -1,72 +1,83 @@
 #include "button.h"
 
-
-int int_array[5][5] =   { {1,2,3,4,5},
-                          {6,7,8,9,10},
-                          {11,12,13,14,15},
-                          {16, 17, 18, 19,20},
-                          {21,22,23,24,25}};
-uint8_t key_samples[5][5]  = { {0}, {0}, {0}, {0}, {0} };
-uint8_t key_pressed[5][5]  = { {0}, {0}, {0}, {0}, {0} };
-uint8_t key_released[5][5]  = { {0}, {0}, {0}, {0}, {0} };
-int row[5] = {-1,-1,-1,-1,-1};
-int col[5] = {-1,-1,-1,-1,-1};
+int press=0;
+int release=1;
+int update = -1;
+int fang = -1;
 int *getrow(){
     //the initial state of the row num
-
+    int row1[5];
    if( GPIOB->IDR & 1<<5){
-       row[0] = 1;
+       row1[0] = 1;
    }
    else if(GPIOB->IDR & 1<<6){
-       row[1] = 1;
+       row1[1] = 1;
    }
    else if(GPIOB->IDR & 1<<7){
-          row[2] = 1;
+          row1[2] = 1;
       }
    else if(GPIOB->IDR & 1<<8){
-          row[3] = 1;
+          row1[3] = 1;
       }
    else if(GPIOB->IDR & 1<<9){
-          row[4] = 1;
+          row1[4] = 1;
       }
-   return row;
+   return row1;
 }
 int *getcol(){
-
+    int col1[5];
     if( GPIOB->IDR & 1<<0){
-        col[0] = 1;
+        col1[0] = 1;
     }
     else if(GPIOB->IDR & 1<<1){
-        col[1] = 1;
+        col1[1] = 1;
     }
     else if(GPIOB->IDR & 1<<2){
-           col[2] = 1;
+           col1[2] = 1;
        }
     else if(GPIOB->IDR & 1<<3){
-           col[3] = 1;
+           col1[3] = 1;
        }
     else if(GPIOB->IDR & 1<<4){
-           col[4] = 1;
+           col1[4] = 1;
        }
-    return col;
+    return col1;
 }
 /* debounce process*/
 void update_key_press() {
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
-            if ((key_samples[i][j] & KEY_PRESS_MASK) == 0b00000111) {
-                key_pressed[i][j] = 1;
-                key_samples[i][j] = 0xFF;
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
+            if ((checkequal(row,hist_row)) && (checkequal(col,hist_col))) {
+                press+=1;
+                if (press == 5)
+                {
+                    press = 0;
+                    fang = -1;
+                    update = 1;
+                }
             }
-
-            if ((key_samples[i][j] & KEY_REL_MASK) == 0b11100000) {
-                key_released[i][j] = 1;
-                key_samples[i][j] = 0x00;
+            else
+            {
+                release += 1;
+                if (release == 5) {
+                    release = 0;
+                    fang = 1;
+                    update = -1;
+                }
             }
         }
     }
 }
+int checkequal(int arr[],int arr1[]){
+    for(int i = 0; i<5;i++){
+        if (arr[i] != arr1[i]){
+            return -1;
+        }
+    }
+    return 1;
 
+
+}
 void gpio_btn(){
     RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
     //Set the pins into outputs and cols
@@ -89,47 +100,30 @@ void setup_timer3() {
 
 }
 void TIM3_IRQHandler() {
-/*
-    int current_row, pap;
-    current_row = -1;
-    pap = GPIOA->IDR;
-    if ((pap & 1<<4))
-        {current_row =0;}
-    else if ((pap & 1<<5))
-    {current_row = 1;}
-    else if ((pap & 1<<6))
-        {current_row =2;}
-    else if ((pap & 1<<7))
-        {current_row =3;}
-    */
-    get_key_pressed();
+    int *temp;
+    temp = getcol();
+    updatearr(hist_col,temp);
+    temp = getrow();
+    updatearr(hist_row,temp);
+    if(fang){
+        temp = getcol();
+        updatearr(col,temp);
+        temp = getrow();
+        updatearr(row,temp);
+    }
     update_key_press();
-    //manipulate the voice
-    voice();
+    if(update){
+        temp = getcol();
+        updatearr(col_pressed,temp);
+        temp = getrow();
+        updatearr(row_pressed,temp);
+    }
+    micro_wait(1000000);
     TIM3->SR &=~TIM_SR_UIF;
 }
-
-void get_key_pressed(){
-    int *row;
-    int *col;
-    row = getrow();
-    col = getcol();
-    for(int a = 0; a<5;a++)
+void updatearr(int arr[],int arr1[]){
+    for(int i=0;i <5; i++)
     {
-        for(int b = 0; b< 5;b++)
-        {
-            if(row[a]&row[b]){
-                key_pressed[a][b] = 1;
-                key_released[a][b] = 0;
-            }
-        }
-    }
+       arr[i] = arr1[i];
 }
-void voice(){
-    setup_gpio();
-    //   setup_adc();
-       setup_dac();
-
-       setup_timer2();
 }
-

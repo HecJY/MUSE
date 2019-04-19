@@ -5,14 +5,15 @@
 int *getrow(void);
 int *getcol(void);
 void gpio_btn(void);
-
+int checkequal(int arr[],int arr1[]);
+int hist_col[5];
+int hist_row[5];
+int row[5];
+int col[5];
+int row_pressed[5];
+int col_pressed[5];
 /* Debounce Algorithm*/
-void update_button(uint8_t *button_history);
-
-uint8_t is_button_up(uint8_t *button_history);
-uint8_t is_button_down(uint8_t *button_history);
-uint8_t is_button_press(uint8_t *button_history);
-uint8_t is_button_release(uint8_t *button_history);
-
-uint8_t read_button(void);
+void update_button(void);
+void setup_timer3(void);
+void updatearr(int arr[],int arr1[]);
 
