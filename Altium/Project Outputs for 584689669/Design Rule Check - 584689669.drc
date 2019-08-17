@@ -1,0 +1,61 @@
+Protel Design System Design Rule Check
+PCB File : G:\201903\584689669\584689669\584689669.PcbDoc
+Date     : 2019-04-22
+Time     : 11:55:23
+
+Processing Rule : Clearance Constraint (Gap=8mil) (All),(All)
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (544.825mil,2601.142mil)(544.825mil,2619.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2579.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (588.825mil,2601.142mil)(588.825mil,2619.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2579.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (544.825mil,2601.142mil)(588.825mil,2601.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2579.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (544.825mil,2823.583mil)(544.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2863.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (588.825mil,2823.583mil)(588.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2863.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (3.532mil < 8mil) Between Track (544.825mil,2841.583mil)(588.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2863.362mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2823.583mil)(544.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2832.583mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (588.825mil,2823.583mil)(588.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2832.583mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2823.583mil)(588.825mil,2823.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2832.583mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2841.583mil)(588.825mil,2841.583mil) on Keep-Out Layer And Pad USB1-6(566.205mil,2832.583mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2601.142mil)(544.825mil,2619.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2610.142mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (588.825mil,2601.142mil)(588.825mil,2619.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2610.142mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2601.142mil)(588.825mil,2601.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2610.142mil) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Track (544.825mil,2619.142mil)(588.825mil,2619.142mil) on Keep-Out Layer And Pad USB1-7(566.205mil,2610.142mil) on Multi-Layer 
+Rule Violations :14
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=300mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (Disabled)(IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=10mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 14
+Time Elapsed        : 00:00:03
