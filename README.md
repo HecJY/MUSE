@@ -9,7 +9,7 @@ MUSE is a project for Purdue University course of ECE362. It is a electric piano
 ## Note
  - The body case can be done by different means; for instance, we used a lazor cutter to cut a piece of wood board for making a case.
  - The keyboard was 3D-printed, and it is helpful to check out the OKAY 2 Synth keyboard for reference.
- - The circuit design includes a Eagle version and a Altium version; the Altium version is a more sophisticated version in terms of its design.
+ - The circuit design includes an Eagle version and an Altium version; the Altium version is a more sophisticated version in terms of its design.
  
 ## Build & Test
  - This project is developed on System Workbench for STM32.
