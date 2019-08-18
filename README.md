@@ -1,8 +1,8 @@
 # MUSE
-MUSE is a project for Purdue course of ECE362. It is a electric piano keyboard embedded in a STM32f051.
+MUSE is a project for Purdue University course of ECE362. It is a electric piano keyboard embedded in a STM32f051.
 
 ## Main Feature
- - The electric piano has two ocatives, from the "middle-C" to ...
+ - The electric piano has two ocatives, and has 15 white keys with 10 black keys in total.
  - The electric piano has chord, which means you can put down different buttons at the same time.
  - The electric piano...polyphonic wave...
 
@@ -12,9 +12,9 @@ MUSE is a project for Purdue course of ECE362. It is a electric piano keyboard e
  - The circuit design includes a Eagle version and a Altium version; the Altium version is a more sophisticated version in terms of its design.
  
 ## Build & Test
- - This project is developed on Workbench STM32.
- - To test the project, first build within Workbench, and then hit "Run"
- - A breadboard circuit is needed for testing.
+ - This project is developed on System Workbench for STM32.
+ - To test the project, first build within Workbench, and then hit "Run".
+ - A builded breadboard circuit is needed for testing; users can refer to dianlutu.sch for circuit building.
 
 ## Contributors
 Jiaxing Yang (HecJY), Yining Huang (hyncharlotte), Litao Xu, Haotian Zheng
